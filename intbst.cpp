@@ -243,6 +243,7 @@ IntBST::Node* IntBST::getSuccessorNode(int value) const{
             }
             break;
         }
+
         else if(value < current->info){
             successor = current;
             current = current->left;
