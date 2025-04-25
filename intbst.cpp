@@ -291,51 +291,33 @@ int IntBST::getSuccessor(int value) const{
 
 // deletes the Node containing the given value from the tree
 // returns true if the node exist and was deleted or false if the node does not exist
+
 bool IntBST::remove(int value) {
-    Node* current = root;
+Node* nodeToDelete = getNodeFor(value, root);
+if (!nodeToDelete) return false;  
 
-    // Find the node to remove
-    while (current && current->info != value) {
-        if (value < current->info) {
-            current = current->left;
-        } else {
-            current = current->right;
-        }
-    }
 
-    if (!current) return false;  // Not found
+if (nodeToDelete->left && nodeToDelete->right) {
+    Node* successor = getSuccessorNode(value);
+    nodeToDelete->info = successor->info;  
+    nodeToDelete = successor;              
+}
 
-    // Case: two children
-    if (current->left && current->right) {
-        // Find in-order successor
-        Node* successor = current->right;
-        while (successor->left) {
-            successor = successor->left;
-        }
 
-        // Copy successor's value
-        current->info = successor->info;
+Node* child = (nodeToDelete->left) ? nodeToDelete->left : nodeToDelete->right;
 
-        // Now remove successor instead
-        current = successor;
-    }
+if (child) {
+    child->parent = nodeToDelete->parent;
+}
 
-    // Now current has at most one child
-    Node* child = current->left ? current->left : current->right;
+if (!nodeToDelete->parent) {
+    root = child;  
+} else if (nodeToDelete == nodeToDelete->parent->left) {
+    nodeToDelete->parent->left = child;
+} else {
+    nodeToDelete->parent->right = child;
+}
 
-    if (child) {
-        child->parent = current->parent;
-    }
-
-    // If removing root
-    if (!current->parent) {
-        root = child;
-    } else if (current == current->parent->left) {
-        current->parent->left = child;
-    } else {
-        current->parent->right = child;
-    }
-
-    delete current;
-    return true;
+delete nodeToDelete;
+return true;
 }
