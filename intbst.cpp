@@ -99,8 +99,8 @@ void IntBST::printPostOrder() const {
 }
 
 void IntBST::printPostOrder(Node *n) const {
-    printInOrder(n->left);
-    printInOrder(n->right);
+    printPostOrder(n->left);
+    printPostOrder(n->right);
     cout << n->info << " ";
 }
 
@@ -164,6 +164,7 @@ bool IntBST::contains(int value) const {
             n = n->left;
         }
     }
+    return false;
 }
 
 // returns the Node containing the predecessor of the given value
@@ -332,4 +333,5 @@ else{
     
 }
 delete current;
+return true;
 }
