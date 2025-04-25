@@ -100,6 +100,7 @@ void IntBST::printPostOrder() const {
 }
 
 void IntBST::printPostOrder(Node *n) const {
+    if (!n) return;
     printPostOrder(n->left);
     printPostOrder(n->right);
     cout << n->info << " ";
