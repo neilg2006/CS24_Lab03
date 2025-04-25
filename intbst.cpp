@@ -294,7 +294,7 @@ int IntBST::getSuccessor(int value) const{
 bool IntBST::remove(int value) {
     Node* current = root;
 
-
+    // Find the node to remove
     while (current && current->info != value) {
         if (value < current->info) {
             current = current->left;
@@ -303,41 +303,36 @@ bool IntBST::remove(int value) {
         }
     }
 
-    if (!current) {
-        return false; 
-    }
+    if (!current) return false;  // Not found
 
-    
+    // Case: two children
     if (current->left && current->right) {
-        
+        // Find in-order successor
         Node* successor = current->right;
         while (successor->left) {
             successor = successor->left;
         }
 
-        
+        // Copy successor's value
         current->info = successor->info;
 
-        
+        // Now remove successor instead
         current = successor;
     }
 
-
+    // Now current has at most one child
     Node* child = current->left ? current->left : current->right;
-
 
     if (child) {
         child->parent = current->parent;
     }
 
-    
+    // If removing root
     if (!current->parent) {
-        root = child; 
-    }
-    else if (current == current->parent->left) {
+        root = child;
+    } else if (current == current->parent->left) {
         current->parent->left = child;
-    }
-    else {
+    } else {
         current->parent->right = child;
     }
 
