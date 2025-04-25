@@ -291,49 +291,56 @@ int IntBST::getSuccessor(int value) const{
 
 // deletes the Node containing the given value from the tree
 // returns true if the node exist and was deleted or false if the node does not exist
-bool IntBST::remove(int value){
-    Node* parent = nullptr;
+bool IntBST::remove(int value) {
     Node* current = root;
-    while(current && current->info !=value){
-        parent = current;
-        if(value < current->info){
-            current = current->left;
-        }
-        else{
-            current = current ->right;
-        }
-}
-if(!current){
-    return false;
-}
-if (current->left && current->right) {
-    Node* sParent = current;
-    Node* successor = current->right;
-    while (successor->left) {
-        sParent = successor;
-        successor = successor->left;
-    }
-    current->info = successor->info;
 
-    current = successor;
-    parent = sParent;
-}
-Node* child = nullptr;
-if(current -> left){
-    child = current ->left;
-}
-else{
-    child = current->right;
-}
-if (parent == nullptr) {
-    root = child;
-}
-else if (parent->left == current) {
-    parent->left = child;
-}
-else if (parent->right == current) {
-    parent->right = child;
-}
-delete current;
-return true;
+
+    while (current && current->info != value) {
+        if (value < current->info) {
+            current = current->left;
+        } else {
+            current = current->right;
+        }
+    }
+
+    if (!current) {
+        return false; 
+    }
+
+    
+    if (current->left && current->right) {
+        
+        Node* successor = current->right;
+        while (successor->left) {
+            successor = successor->left;
+        }
+
+        
+        current->info = successor->info;
+
+        
+        current = successor;
+    }
+
+
+    Node* child = current->left ? current->left : current->right;
+
+
+    if (child) {
+        child->parent = current->parent;
+    }
+
+    
+    if (!current->parent) {
+        root = child; 
+    }
+    else if (current == current->parent->left) {
+        current->parent->left = child;
+    }
+    else {
+        current->parent->right = child;
+    }
+
+    delete current;
+    return true;
 }
