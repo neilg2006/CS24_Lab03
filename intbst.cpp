@@ -33,6 +33,7 @@ void IntBST::clear(Node *n) {
 bool IntBST::insert(int value) {
     if(!root){
         root = new Node(value); 
+        root->parent = nullptr;
         return true;
     }
     return insert(value, root);
@@ -44,6 +45,7 @@ bool IntBST::insert(int value, Node *n) {
     if(value < n->info){
         if(!n->left){
             n->left = new Node(value);
+            n->left->parent = n;
             return true;
         }
         else{
@@ -53,6 +55,7 @@ bool IntBST::insert(int value, Node *n) {
     else if(value > n->info){
         if(!n->right){
             n->right = new Node(value);
+            n->right->parent = n;
             return true;
         }
         else{
@@ -291,7 +294,6 @@ int IntBST::getSuccessor(int value) const{
 
 // deletes the Node containing the given value from the tree
 // returns true if the node exist and was deleted or false if the node does not exist
-
 bool IntBST::remove(int value) {
 Node* nodeToDelete = getNodeFor(value, root);
 if (!nodeToDelete) return false;  
