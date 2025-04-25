@@ -96,7 +96,6 @@ void IntBST::printInOrder(Node *n) const {
 // prints tree data post-order, with helper
 void IntBST::printPostOrder() const {
     printPostOrder(root);
-    cout << std::endl;
 }
 
 void IntBST::printPostOrder(Node *n) const {
