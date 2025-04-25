@@ -47,7 +47,7 @@ bool IntBST::insert(int value, Node *n) {
             return true;
         }
         else{
-            insert(value, n->left);
+            return insert(value, n->left);
         }
     }
     else if(value > n->info){
@@ -56,7 +56,7 @@ bool IntBST::insert(int value, Node *n) {
             return true;
         }
         else{
-            insert(value, n->right);
+            return insert(value, n->right);
         }
     }
     else{
@@ -96,6 +96,7 @@ void IntBST::printInOrder(Node *n) const {
 // prints tree data post-order, with helper
 void IntBST::printPostOrder() const {
     printPostOrder(root);
+    cout << std::endl;
 }
 
 void IntBST::printPostOrder(Node *n) const {
@@ -304,14 +305,15 @@ bool IntBST::remove(int value){
 if(!current){
     return false;
 }
-if(current->left && current->right){
+if (current->left && current->right) {
     Node* sParent = current;
-    Node* successor = current -> right;
-    while(successor -> left){
-        sParent  = successor;
+    Node* successor = current->right;
+    while (successor->left) {
+        sParent = successor;
         successor = successor->left;
     }
     current->info = successor->info;
+
     current = successor;
     parent = sParent;
 }
@@ -322,15 +324,14 @@ if(current -> left){
 else{
     child = current->right;
 }
-if(!parent){
+if (parent == nullptr) {
     root = child;
 }
-else if (parent->left == current){
-    parent -> left = child;
+else if (parent->left == current) {
+    parent->left = child;
 }
-else{
+else if (parent->right == current) {
     parent->right = child;
-    
 }
 delete current;
 return true;
