@@ -15,14 +15,14 @@ int main() {
     IntBST bst1, bst2;
 
     // insert data to bst1
-    bst1.insert(64);
-    bst1.insert(128);
-    bst1.insert(8);
-    bst1.insert(512);
-    bst1.insert(256);
-    bst1.insert(32);
-    bst1.insert(16);
-    bst1.insert(4);
+    bst1.insert(50);
+    bst1.insert(100);
+    bst1.insert(25);
+    bst1.insert(200);
+    bst1.insert(150);
+    bst1.insert(40);
+    bst1.insert(30);
+    bst1.insert(10);
     
     // let user choose one or all tests
     bool all = true;
@@ -49,52 +49,52 @@ int main() {
     if (all || testnum == 4)
         cout << "  count: " << bst1.count() << endl;
     if (all || testnum == 5) {
-	cout << "  contains 64? " <<
-            (bst1.contains(64) ? "Y" : "N") << endl;
-	cout << "  contains 4? " <<
-            (bst1.contains(4) ? "Y" : "N") << endl;
-        cout << "  contains 16? " <<
-            (bst1.contains(16) ? "Y" : "N") << endl;
-        cout << "  contains 128? " <<
-            (bst1.contains(128) ? "Y" : "N") << endl;
-        cout << "  contains 17? " <<
-            (bst1.contains(17) ? "Y" : "N") << endl;
-        cout << "  contains 512? " <<
-            (bst1.contains(512) ? "Y" : "N") << endl;
+	cout << "  contains 50? " <<
+            (bst1.contains(50) ? "Y" : "N") << endl;
+	cout << "  contains 10? " <<
+            (bst1.contains(10) ? "Y" : "N") << endl;
+        cout << "  contains 30? " <<
+            (bst1.contains(30) ? "Y" : "N") << endl;
+        cout << "  contains 100? " <<
+            (bst1.contains(100) ? "Y" : "N") << endl;
+        cout << "  contains 35? " <<
+            (bst1.contains(35) ? "Y" : "N") << endl;
+        cout << "  contains 200? " <<
+            (bst1.contains(200) ? "Y" : "N") << endl;
     }
     if(all || testnum == 6){
-	cout << "  predecessor of 64 is: " <<
-	    bst1.getPredecessor(64) << endl;
-	cout << "  predecessor of 512 is: " <<
-	    bst1.getPredecessor(512) << endl;
-	cout << "  predecessor of 4 is: " <<
-	    bst1.getPredecessor(4) << endl;
-	cout << "  successor of 64 is: " <<
-	    bst1.getSuccessor(64) << endl;
-	cout << "  successor of 512 is: " <<
-	    bst1.getSuccessor(512) << endl;
-	cout << "  successor of 4 is: " <<
-	    bst1.getSuccessor(4) << endl;
+	cout << "  predecessor of 50 is: " <<
+	    bst1.getPredecessor(50) << endl;
+	cout << "  predecessor of 200 is: " <<
+	    bst1.getPredecessor(200) << endl;
+	cout << "  predecessor of 10 is: " <<
+	    bst1.getPredecessor(10) << endl;
+	cout << "  successor of 50 is: " <<
+	    bst1.getSuccessor(50) << endl;
+	cout << "  successor of 200 is: " <<
+	    bst1.getSuccessor(200) << endl;
+	cout << "  successor of 10 is: " <<
+	    bst1.getSuccessor(10) << endl;
     }
     if(all || testnum == 7) {
-	cout << "  removing 4" << endl;
-	bst1.remove(4);
-	cout << "  removing 64" << endl;
-	bst1.remove(64);
-	cout << "  removing 128" << endl;
-	bst1.remove(128);
-	cout << "  contains 64? " <<
-            (bst1.contains(64) ? "Y" : "N") << endl;
-	cout << "  contains 4? " <<
-	    (bst1.contains(4) ? "Y" : "N") << endl;
-        cout << "  contains 16? " <<
-            (bst1.contains(16) ? "Y" : "N") << endl;
-        cout << "  contains 128? " <<
-            (bst1.contains(128) ? "Y" : "N") << endl;
-        cout << "  contains 17? " <<
-            (bst1.contains(17) ? "Y" : "N") << endl;
-        cout << "  contains 512? " <<
-            (bst1.contains(512) ? "Y" : "N") << endl;
+	cout << "  removing 10" << endl;
+	bst1.remove(10);
+	cout << "  removing 50" << endl;
+	bst1.remove(50);
+	cout << "  removing 100" << endl;
+	bst1.remove(100);
+	cout << "  contains 50? " <<
+            (bst1.contains(50) ? "Y" : "N") << endl;
+	cout << "  contains 10? " <<
+	    (bst1.contains(10) ? "Y" : "N") << endl;
+        cout << "  contains 30? " <<
+            (bst1.contains(30) ? "Y" : "N") << endl;
+        cout << "  contains 100? " <<
+            (bst1.contains(100) ? "Y" : "N") << endl;
+        cout << "  contains 35? " <<
+            (bst1.contains(35) ? "Y" : "N") << endl;
+        cout << "  contains 200? " <<
+            (bst1.contains(200) ? "Y" : "N") << endl;
 	cout << "  pre-order: ";
         bst1.printPreOrder();
         cout << endl;
@@ -119,8 +119,8 @@ int main() {
     if (all || testnum == 4)
         cout << "  count: " << bst2.count() << endl;
     if (all || testnum == 5)
-        cout << "  contains 16? " <<
-            (bst2.contains(16) ? "Y" : "N") << endl;
+        cout << "  contains 30? " <<
+            (bst2.contains(30) ? "Y" : "N") << endl;
 
     // add tests for optional methods that you attempt to implement
     // but don't do that until after submitting the basic version
